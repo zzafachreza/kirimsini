@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "473202639583",
+    "project_id": "kirim-sini",
+    "storage_bucket": "kirim-sini.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473202639583:android:72236e498a6abec96edf6a",
+        "android_client_info": {
+          "package_name": "com.kirimsini"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "473202639583-njimn1d09hjg47sbd5vr4qvi0m90rt86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_X1gUklAoH-KjVnXdQQlPgsJivcI4rv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "473202639583-njimn1d09hjg47sbd5vr4qvi0m90rt86.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
