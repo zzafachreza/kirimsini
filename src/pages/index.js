@@ -31,11 +31,13 @@ import Brand from './Brand';
 import Pilihan from './Pilihan';
 import Masuk from './Masuk';
 import Keluar from './Keluar';
+import MenuKirim from './MenuKirim';
 
 export {
   Splash,
   Pilihan,
   Wa,
+  MenuKirim,
   Masuk,
   Keluar,
   Brand,

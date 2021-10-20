@@ -134,7 +134,7 @@ export default function Login({navigation}) {
           style={{
             flex: 1,
             backgroundColor: colors.primary,
-            padding: 10,
+            padding: 20,
             borderRadius: 20,
             paddingBottom: 30,
           }}>

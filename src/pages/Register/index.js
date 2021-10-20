@@ -113,6 +113,7 @@ export default function Register({navigation}) {
       // source={require('../../assets/back.jpeg')}
       style={{
         flex: 1,
+        paddingHorizontal: 15,
         backgroundColor: colors.primary,
       }}>
       {/* <Switch onValueChange={toggleSwitch} value={isEnabled} /> */}

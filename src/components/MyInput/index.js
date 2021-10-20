@@ -10,7 +10,9 @@ export default function MyInput({
   onFocus,
   label,
   iconname,
+  paddingBottom,
   onChangeText,
+  multiline,
   value,
   borderColor = colors.primary,
   keyboardType,
@@ -58,6 +60,7 @@ export default function MyInput({
         </Text>
       )}
       <TextInput
+        multiline={multiline}
         autoFocus={autoFocus}
         onFocus={onFocus}
         placeholder={placeholder}
@@ -69,6 +72,7 @@ export default function MyInput({
         style={{
           backgroundColor: backgroundColor,
           borderColor: borderColor,
+          paddingBottom: paddingBottom,
           borderRadius: 10,
           borderWidth: 1,
           paddingLeft: 10,

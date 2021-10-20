@@ -103,7 +103,7 @@ export default function Home({navigation}) {
             style={{
               fontFamily: fonts.secondary[600],
               color: colors.white,
-              fontSize: windowWidth / 34,
+              fontSize: windowWidth / 28,
               textAlign: 'center',
               // marginHorizontal: 10,
             }}>
@@ -293,7 +293,7 @@ export default function Home({navigation}) {
               justifyContent: 'space-around',
             }}>
             <DataKategori
-              onPress={() => navigation.navigate('Daftar')}
+              onPress={() => navigation.navigate('MenuKirim')}
               icon={require('../../assets/icon1.png')}
               nama="Kirim"
               nama2="Paket"
@@ -317,6 +317,7 @@ export default function Home({navigation}) {
               nama2="Paket"
             />
           </View>
+
           <View
             style={{
               padding: 10,
