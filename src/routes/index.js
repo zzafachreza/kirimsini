@@ -43,6 +43,9 @@ import {
   Masuk,
   Keluar,
   MenuKirim,
+  Alamat,
+  AlamatTambah,
+  EditProfile,
 } from '../pages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components';
@@ -373,6 +376,87 @@ export default function Router() {
         component={Cart}
         options={({route, navigation}) => ({
           title: 'Keranjang',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+          cardStyleInterpolator: ({current, layouts}) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        })}
+      />
+
+      <Stack.Screen
+        name="Alamat"
+        component={Alamat}
+        options={({route, navigation}) => ({
+          title: 'Daftar Alamat',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+          cardStyleInterpolator: ({current, layouts}) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        })}
+      />
+
+      <Stack.Screen
+        name="AlamatTambah"
+        component={AlamatTambah}
+        options={({route, navigation}) => ({
+          title: 'Tambah Alamat',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+          cardStyleInterpolator: ({current, layouts}) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        })}
+      />
+
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
+        options={({route, navigation}) => ({
+          title: 'Edit Profile',
           headerTintColor: 'white',
           headerStyle: {
             backgroundColor: colors.primary,

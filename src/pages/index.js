@@ -32,9 +32,15 @@ import Pilihan from './Pilihan';
 import Masuk from './Masuk';
 import Keluar from './Keluar';
 import MenuKirim from './MenuKirim';
+import Alamat from './Alamat';
+import AlamatTambah from './AlamatTambah';
+import EditProfile from './EditProfile';
 
 export {
   Splash,
+  Alamat,
+  AlamatTambah,
+  EditProfile,
   Pilihan,
   Wa,
   MenuKirim,

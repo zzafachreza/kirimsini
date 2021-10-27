@@ -30,116 +30,170 @@ export default function Account({navigation, route}) {
   return (
     <SafeAreaView>
       <View style={{padding: 10}}>
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            padding: 10,
+          }}>
+          <View
+            style={{
+              borderRadius: 75,
+
+              justifyContent: 'center',
+              alignItems: 'center',
+              overflow: 'hidden',
+            }}>
+            <Image
+              source={{
+                uri:
+                  user.foto == ''
+                    ? 'https://zavalabs.com/nogambar.jpg'
+                    : user.foto,
+              }}
+              resizeMode="cover"
+              style={{width: 100, aspectRatio: 1}}
+            />
+          </View>
+
+          <Text
+            style={{
+              fontFamily: fonts.secondary[400],
+              fontSize: windowWidth / 20,
+              color: colors.primary,
+            }}>
+            {user.nama_lengkap}
+          </Text>
+        </View>
         {/* data detail */}
-        <View>
-          <View
-            style={{
-              marginVertical: 10,
-              padding: 10,
-              backgroundColor: colors.white,
-              borderRadius: 10,
-            }}>
-            <Text
+        <View style={{padding: 10}}>
+          <MyButton
+            onPress={() => navigation.navigate('EditProfile', user)}
+            title="Edit Profile"
+            colorText={colors.white}
+            iconColor={colors.white}
+            warna={colors.secondary}
+            Icons="create-outline"
+          />
+
+          <MyGap jarak={10} />
+          <View>
+            <View
               style={{
-                fontFamily: fonts.secondary[600],
-                coloe: colors.black,
+                marginVertical: 5,
+                padding: 10,
+                backgroundColor: colors.white,
+                borderRadius: 10,
               }}>
-              Nama Lengkap
-            </Text>
-            <Text
+              <Text
+                style={{
+                  fontFamily: fonts.secondary[600],
+                  color: colors.black,
+                }}>
+                E-mail
+              </Text>
+              <Text
+                style={{
+                  fontFamily: fonts.secondary[400],
+                  color: colors.primary,
+                }}>
+                {user.email}
+              </Text>
+            </View>
+            <View
               style={{
-                fontFamily: fonts.secondary[400],
-                coloe: colors.black,
+                marginVertical: 5,
+                padding: 10,
+                backgroundColor: colors.white,
+                borderRadius: 10,
               }}>
-              {user.nama_lengkap}
-            </Text>
-          </View>
-          <View
-            style={{
-              marginVertical: 10,
-              padding: 10,
-              backgroundColor: colors.white,
-              borderRadius: 10,
-            }}>
-            <Text
+              <Text
+                style={{
+                  fontFamily: fonts.secondary[600],
+                  color: colors.black,
+                }}>
+                Telepon / Whatsapp
+              </Text>
+              <Text
+                style={{
+                  fontFamily: fonts.secondary[400],
+                  color: colors.primary,
+                }}>
+                {user.tlp}
+              </Text>
+            </View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Alamat', user)}
               style={{
-                fontFamily: fonts.secondary[600],
-                coloe: colors.black,
+                marginVertical: 5,
+                padding: 10,
+                borderRadius: 10,
+                backgroundColor: colors.white,
+                flexDirection: 'row',
               }}>
-              Nomor Telepon / Whatsapp
-            </Text>
-            <Text
+              <View style={{flex: 1}}>
+                <Text
+                  style={{
+                    fontFamily: fonts.secondary[600],
+                    color: colors.black,
+                  }}>
+                  Alamat
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: fonts.secondary[400],
+                    color: colors.primary,
+                  }}>
+                  {user.alamat}
+                </Text>
+              </View>
+              <View>
+                <Icon type="ionicon" name="chevron-forward-outline" />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ListData')}
               style={{
-                fontFamily: fonts.secondary[400],
-                coloe: colors.black,
+                marginVertical: 5,
+                padding: 10,
+                borderRadius: 10,
+                backgroundColor: colors.white,
+                flexDirection: 'row',
               }}>
-              {user.tlp}
-            </Text>
-          </View>
-          <View
-            style={{
-              marginVertical: 10,
-              padding: 10,
-              backgroundColor: colors.white,
-              borderRadius: 10,
-            }}>
-            <Text
-              style={{
-                fontFamily: fonts.secondary[600],
-                coloe: colors.black,
-              }}>
-              Alamat Email
-            </Text>
-            <Text
-              style={{
-                fontFamily: fonts.secondary[400],
-                coloe: colors.black,
-              }}>
-              {user.email}
-            </Text>
-          </View>
-          <View
-            style={{
-              marginVertical: 10,
-              padding: 10,
-              backgroundColor: colors.white,
-              borderRadius: 10,
-            }}>
-            <Text
-              style={{
-                fontFamily: fonts.secondary[600],
-                coloe: colors.black,
-              }}>
-              Alamat
-            </Text>
-            <Text
-              style={{
-                fontFamily: fonts.secondary[400],
-                coloe: colors.black,
-              }}>
-              {user.alamat}
-            </Text>
+              <View style={{flex: 1}}>
+                <Text
+                  style={{
+                    fontFamily: fonts.secondary[600],
+                    color: colors.black,
+                  }}>
+                  Pesanan Saya
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: fonts.secondary[400],
+                    color: colors.primary,
+                  }}>
+                  Informasi Pesanan
+                </Text>
+              </View>
+              <View>
+                <Icon type="ionicon" name="chevron-forward-outline" />
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
 
-        {/* <MyButton
-          onPress={() => navigation.navigate('EditProfile', user)}
-          title="Edit Profile"
-          colorText={colors.white}
-          iconColor={colors.white}
-          warna={colors.primary}
-          Icons="create-outline"
-        /> */}
-
-        <MyGap jarak={20} />
         {/* button */}
-
-        <MyButton
-          onPress={btnKeluar}
-          title="Keluar"
-          warna={colors.primary}
-          Icons="log-out-outline"
-        />
+        <View style={{padding: 10}}>
+          <MyButton
+            onPress={btnKeluar}
+            title="Keluar"
+            colorText={colors.white}
+            iconColor={colors.white}
+            warna={colors.primary}
+            Icons="log-out-outline"
+          />
+        </View>
       </View>
     </SafeAreaView>
   );

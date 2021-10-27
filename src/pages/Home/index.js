@@ -204,15 +204,39 @@ export default function Home({navigation}) {
               Mau kirim apa hari ini ?
             </Text>
           </View>
-          <View
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Account')}
             style={{
               flexDirection: 'row',
               justifyContent: 'flex-end',
               alignItems: 'center',
               padding: 10,
             }}>
-            <Icon type="ionicon" name="notifications" color={colors.white} />
-          </View>
+            <View
+              style={{
+                borderWidth: 2,
+                borderRadius: 30,
+                width: 60,
+                height: 60,
+                borderColor: colors.white,
+                overflow: 'hidden',
+              }}>
+              <Image
+                source={{
+                  uri:
+                    user.foto == ''
+                      ? 'https://zavalabs.com/nogambar.jpg'
+                      : user.foto,
+                }}
+                resizeMode="cover"
+                style={{
+                  width: 60,
+                  aspectRatio: 1,
+                  // borderRadius: 30,
+                }}
+              />
+            </View>
+          </TouchableOpacity>
         </View>
         <View
           style={{
