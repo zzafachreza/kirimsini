@@ -8,6 +8,7 @@ import {color} from 'react-native-reanimated';
 
 export default function MyInput({
   onFocus,
+  onBlur,
   label,
   iconname,
   paddingBottom,
@@ -60,6 +61,7 @@ export default function MyInput({
         </Text>
       )}
       <TextInput
+        onBlur={onBlur}
         multiline={multiline}
         autoFocus={autoFocus}
         onFocus={onFocus}

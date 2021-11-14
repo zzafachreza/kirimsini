@@ -7,6 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
   CheckBox,
+  Alert,
 } from 'react-native';
 import {colors} from '../../utils/colors';
 import {fonts} from '../../utils/fonts';
@@ -40,15 +41,26 @@ export default function Alamat({navigation, route}) {
   };
 
   const hapus = x => {
-    axios
-      .post('https://zavalabs.com/kirimsini/api/alamat_hapus.php', {
-        id: route.params.id,
-        id_alamat: x,
-      })
-      .then(res => {
-        console.log('data alamat', res);
-        setData(res.data);
-      });
+    Alert.alert('Kirimsini', 'Apakah Anda akan hapus alamat ini ?', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {
+        text: 'OK',
+        onPress: () => {
+          axios
+            .post('https://zavalabs.com/kirimsini/api/alamat_hapus.php', {
+              id_alamat: x,
+            })
+            .then(res => {
+              getDataAlamat();
+              console.log('data alamat', res);
+            });
+        },
+      },
+    ]);
   };
 
   useEffect(() => {
@@ -63,6 +75,8 @@ export default function Alamat({navigation, route}) {
         {data.map((item, i) => {
           let alamat =
             item.alamat +
+            ' ' +
+            item.kecamatan +
             ' ' +
             item.kota +
             ' ' +
@@ -85,31 +99,37 @@ export default function Alamat({navigation, route}) {
                   flex: 1,
                 }}>
                 <View style={{flex: 2}}>
-                  <Text>{item.nama_lengkap}</Text>
-                  <Text>
-                    {item.alamat} {item.kota} {item.provinsi} {item.pos}
+                  <Text
+                    style={{
+                      fontFamily: fonts.secondary[600],
+                      color: colors.black,
+                    }}>
+                    {item.nama_lengkap}
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: fonts.secondary[400],
+                      color: colors.black,
+                    }}>
+                    {item.alamat} {item.kecamatan} {item.kota} {item.provinsi}{' '}
+                    {item.pos}
                   </Text>
                 </View>
                 <View
                   style={{
                     flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    justifyContent: 'flex-end',
+                    alignItems: 'flex-end',
                   }}>
-                  {/* <TouchableOpacity onPress={hapus} style={{padding: 10}}>
+                  <TouchableOpacity
+                    onPress={() => hapus(item.id)}
+                    style={{padding: 10}}>
                     <Icon
                       type="ionicon"
                       name="trash-outline"
                       color={colors.primary}
                     />
-                    <Text
-                      style={{
-                        fontFamily: fonts.secondary[600],
-                        color: colors.primary,
-                      }}>
-                      Hapus
-                    </Text>
-                  </TouchableOpacity> */}
+                  </TouchableOpacity>
                 </View>
               </View>
               <TouchableOpacity
