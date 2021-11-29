@@ -45,7 +45,7 @@ export default function Register({navigation}) {
     nama_lengkap: '',
     email: '',
     password: '',
-    telepon: '',
+    telepon: '+62',
     alamat: '',
   });
 
@@ -82,30 +82,25 @@ export default function Register({navigation}) {
       });
     } else {
       setLoading(true);
-      console.log(data);
+      const tujuan = data.telepon.replace('+', '', data.telepon);
+      setData({
+        ...data,
+        telepon: tujuan,
+      });
       axios
-        .post('https://zavalabs.com/sigadisbekasi/api/register.php', data)
+        .post('https://zavalabs.com/kirimsini/api/otp.php', {
+          tujuan: tujuan,
+        })
         .then(res => {
+          setLoading(false);
           console.log(res);
-          let err = res.data.split('#');
 
-          // console.log(err[0]);
-          if (err[0] == 50) {
-            setTimeout(() => {
-              setLoading(false);
-              showMessage({
-                message: err[1],
-                type: 'danger',
-              });
-            }, 1200);
-          } else {
-            setTimeout(() => {
-              navigation.replace('Success', {
-                messege: res.data,
-              });
-            }, 1200);
+          if ((data.status = true)) {
+            navigation.navigate('Otp', data);
           }
         });
+
+      console.log(data);
     }
   };
   return (

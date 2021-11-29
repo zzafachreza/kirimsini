@@ -35,9 +35,11 @@ import MenuKirim from './MenuKirim';
 import Alamat from './Alamat';
 import AlamatTambah from './AlamatTambah';
 import EditProfile from './EditProfile';
+import Otp from './Otp';
 
 export {
   Splash,
+  Otp,
   Alamat,
   AlamatTambah,
   EditProfile,
