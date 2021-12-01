@@ -36,9 +36,13 @@ import Alamat from './Alamat';
 import AlamatTambah from './AlamatTambah';
 import EditProfile from './EditProfile';
 import Otp from './Otp';
+import CekOngkir from './CekOngkir';
+import CekOngkirData from './CekOngkirData';
 
 export {
   Splash,
+  CekOngkirData,
+  CekOngkir,
   Otp,
   Alamat,
   AlamatTambah,

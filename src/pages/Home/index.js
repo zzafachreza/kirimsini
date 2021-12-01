@@ -329,7 +329,7 @@ export default function Home({navigation}) {
               nama2="Paket"
             />
             <DataKategori
-              onPress={() => navigation.navigate('Tahsin')}
+              onPress={() => navigation.navigate('CekOngkir')}
               icon={require('../../assets/icon3.png')}
               nama="Cek"
               nama2="Ongkir"
