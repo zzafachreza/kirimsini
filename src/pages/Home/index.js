@@ -335,7 +335,7 @@ export default function Home({navigation}) {
               nama2="Ongkir"
             />
             <DataKategori
-              onPress={() => navigation.navigate('Tahsin')}
+              onPress={() => navigation.navigate('Tracking')}
               icon={require('../../assets/icon4.png')}
               nama="Lacak"
               nama2="Paket"

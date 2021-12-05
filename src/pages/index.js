@@ -38,9 +38,13 @@ import EditProfile from './EditProfile';
 import Otp from './Otp';
 import CekOngkir from './CekOngkir';
 import CekOngkirData from './CekOngkirData';
+import Tracking from './Tracking';
+import TrackingDetail from './TrackingDetail';
 
 export {
   Splash,
+  TrackingDetail,
+  Tracking,
   CekOngkirData,
   CekOngkir,
   Otp,

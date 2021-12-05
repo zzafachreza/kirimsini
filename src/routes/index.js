@@ -49,6 +49,8 @@ import {
   Otp,
   CekOngkir,
   CekOngkirData,
+  Tracking,
+  TrackingDetail,
 } from '../pages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components';
@@ -258,6 +260,64 @@ export default function Router() {
         component={CekOngkir}
         options={{
           headerTitle: 'CEK ONGKOS KIRIM',
+          headerTintColor: 'white',
+          headerShown: true,
+
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+          cardStyleInterpolator: ({current, layouts}) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="Tracking"
+        component={Tracking}
+        options={{
+          headerTitle: 'LACAK PAKET',
+          headerTintColor: 'white',
+          headerShown: true,
+
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+          cardStyleInterpolator: ({current, layouts}) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="TrackingDetail"
+        component={TrackingDetail}
+        options={{
+          headerTitle: 'HASIL LACAK PAKET',
           headerTintColor: 'white',
           headerShown: true,
 
