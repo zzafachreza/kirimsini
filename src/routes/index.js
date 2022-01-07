@@ -51,6 +51,7 @@ import {
   CekOngkirData,
   Tracking,
   TrackingDetail,
+  Monitoring,
 } from '../pages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components';
@@ -233,6 +234,35 @@ export default function Router() {
           headerTitle: 'OTP',
           headerTintColor: 'white',
           headerShown: false,
+
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+          cardStyleInterpolator: ({current, layouts}) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
+      <Stack.Screen
+        name="Monitoring"
+        component={Monitoring}
+        options={{
+          headerTitle: 'MONITORING PAKET',
+          headerTintColor: 'white',
+          headerShown: true,
 
           headerStyle: {
             backgroundColor: colors.primary,

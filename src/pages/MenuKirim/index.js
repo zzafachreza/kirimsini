@@ -31,6 +31,17 @@ export default function MenuKirim({navigation}) {
   const windowHeight = Dimensions.get('window').height;
   const [loading, setLoading] = useState(false);
 
+  const [pro, setPro] = useState(false);
+  const [dataPro, setDataPro] = useState([]);
+  const [kecamatan, setKecamatan] = useState('');
+
+  const [pro2, setPro2] = useState(false);
+  const [dataPro2, setDataPro2] = useState([]);
+  const [kecamatan2, setKecamatan2] = useState('');
+
+  const token =
+    '706f693ef31318d4f320345482721b74ca0fa9c16ed75dde51df24c849cec6a2';
+
   const modalizeRef = useRef();
 
   const onOpen = () => {
@@ -57,7 +68,6 @@ export default function MenuKirim({navigation}) {
 
   const [buka, setBuka] = useState(false);
 
-  const [token, setToken] = useState('');
   const [data, setData] = useState({});
 
   const [kontak, setKontak] = useState([]);
@@ -68,7 +78,7 @@ export default function MenuKirim({navigation}) {
     if (isFocused) {
       getData('user').then(res => {
         setUser(res);
-        // console.log(user);
+        console.log('data usern', user);
       });
     }
   }, [isFocused]);
@@ -313,6 +323,70 @@ export default function MenuKirim({navigation}) {
               <Icon type="ionicon" name="person-add" color={colors.white} />
             </TouchableOpacity>
           </View>
+          <MyGap jarak={20} />
+          <MyInput
+            label="Kecamatan / Kota kabupaten"
+            colorIcon={colors.white}
+            labelColor={colors.white}
+            iconname="cloud-upload-outline"
+            // onBlur={() => setPro(false)}
+
+            // onBlur={() => setPro(false)}
+            value={kecamatan}
+            onChangeText={value => {
+              if (value.length > 3 && value != 'undefined') {
+                setKecamatan(value);
+
+                axios({
+                  method: 'POST',
+                  url: 'https://tdev.kiriminaja.com/api/mitra/v2/get_address_by_name',
+                  headers: {Authorization: `Bearer ${token}`},
+                  data: {
+                    search: value,
+                  },
+                }).then(res => {
+                  setPro(true);
+                  console.log(res.data.data);
+                  setDataPro(res.data.data);
+                });
+              } else {
+                console.log('kosong');
+                setPro(false);
+                setDataPro([]);
+              }
+            }}
+          />
+          {pro && (
+            <View style={{padding: 10, backgroundColor: colors.white}}>
+              <ScrollView>
+                {dataPro.map(itemPro => {
+                  return (
+                    <TouchableOpacity
+                      onPress={() => {
+                        setKecamatan(itemPro.text);
+                        setTimeout(() => {
+                          setPro(false);
+                        }, 500);
+                      }}
+                      style={{
+                        padding: 10,
+                        borderBottomWidth: 1,
+                        borderBottomColor: '#CDCDCD',
+                      }}>
+                      <Text
+                        style={{
+                          fontFamily: fonts.secondary[600],
+                          color: colors.black,
+                          fontSize: windowWidth / 25,
+                        }}>
+                        {itemPro.text}
+                      </Text>
+                    </TouchableOpacity>
+                  );
+                })}
+              </ScrollView>
+            </View>
+          )}
 
           <MyGap jarak={20} />
           <MyInput

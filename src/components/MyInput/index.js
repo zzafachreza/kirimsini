@@ -21,6 +21,7 @@ export default function MyInput({
   secureTextEntry,
   styleInput,
   placeholder,
+  onSubmitEditing,
   backgroundColor = colors.white,
   autoFocus,
   label2,
@@ -69,6 +70,7 @@ export default function MyInput({
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
         value={value}
+        onSubmitEditing={onSubmitEditing}
         onChangeText={onChangeText}
         autoCapitalize="none"
         style={{

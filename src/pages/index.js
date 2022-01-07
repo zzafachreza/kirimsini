@@ -40,9 +40,11 @@ import CekOngkir from './CekOngkir';
 import CekOngkirData from './CekOngkirData';
 import Tracking from './Tracking';
 import TrackingDetail from './TrackingDetail';
+import Monitoring from './Monitoring';
 
 export {
   Splash,
+  Monitoring,
   TrackingDetail,
   Tracking,
   CekOngkirData,

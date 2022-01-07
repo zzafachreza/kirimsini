@@ -323,7 +323,7 @@ export default function Home({navigation}) {
               nama2="Paket"
             />
             <DataKategori
-              onPress={() => navigation.navigate('Info')}
+              onPress={() => navigation.navigate('Monitoring')}
               icon={require('../../assets/icon2.png')}
               nama="Monitorin"
               nama2="Paket"
